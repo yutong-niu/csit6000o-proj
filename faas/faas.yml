@@ -1,0 +1,11 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  get-products:
+    lang: python3
+    handler: ./get-products
+    image: serverlessshoppingcart/get-products:latest
+    common_files: true
+
