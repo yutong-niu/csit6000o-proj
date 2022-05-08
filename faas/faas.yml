@@ -9,3 +9,8 @@ functions:
     image: serverlessshoppingcart/get-products:latest
     common_files: true
 
+  get-product:
+    lang: python3
+    handler: ./get-product
+    image: serverlessshoppingcart/get-product:latest
+    common_files: true
