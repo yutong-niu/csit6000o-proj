@@ -12,17 +12,16 @@ HEADERS = {
     "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
 }
 
-def handle(req):
-    #path_params = event["pathParameters"]
-    #product_id = path_params.get("product_id")
-    product_id = req
+def handle(event, context):
+    product_id = event.body.decode("utf-8")
     product = next(
         (item for item in product_list if item["productId"] == product_id), None
     )
 
-    return json.dumps({
-            "statusCode": 200,
-            "headers": HEADERS,
-            "body": {"product": product},
-    })
-
+    return {
+        "statusCode": 200,
+        "headers": HEADERS,
+        "body": {
+            "product": product
+        },
+    }

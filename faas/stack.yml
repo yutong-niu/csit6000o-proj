@@ -8,3 +8,8 @@ functions:
     handler: ./get-products
     image: serverlessshoppingcart/get-products:latest
     common_files: true
+  get-product:
+    lang: python3-http
+    handler: ./get-product
+    image: serverlessshoppingcart/get-product:latest
+    common_files: true
