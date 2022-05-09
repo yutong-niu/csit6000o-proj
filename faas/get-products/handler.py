@@ -13,9 +13,9 @@ HEADERS = {
 }
 
 def handle(req):
-    return {
+    return json.dumps({
         "statusCode": 200,
         "headers": HEADERS,
-        "body": json.dumps({"products": product_list}),
-    }
+        "body": {"products": product_list},
+    })
 

@@ -20,9 +20,9 @@ def handle(req):
         (item for item in product_list if item["productId"] == product_id), None
     )
 
-    return {
+    return json.dumps({
             "statusCode": 200,
             "headers": HEADERS,
-            "body": json.dumps({"product": product}),
-    }
+            "body": {"product": product},
+    })
 
