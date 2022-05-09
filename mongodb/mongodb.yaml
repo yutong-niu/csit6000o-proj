@@ -19,7 +19,8 @@ spec:
         image: serverlessshoppingcart/mongodb:latest
         ports:
         - containerPort: 27017
----
+
+
 apiVersion: apps/v1
 kind: Service
 metadata:
