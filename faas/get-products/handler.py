@@ -12,10 +12,9 @@ HEADERS = {
     "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
 }
 
-def handle(req):
-    return json.dumps({
+def handle(event, context):
+    return {
         "statusCode": 200,
         "headers": HEADERS,
         "body": {"products": product_list},
-    })
-
+    }
