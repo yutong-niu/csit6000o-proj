@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: openfaas-fn
+  labels:
+    app: frontend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-app
+  template:
+    metadata:
+      labels:
+        app: frontend-app
+    spec:
+      containers:
+      - name: serverlessshoppingcart-frontend
+        image: serverlessshoppingcart/frontend:latest
+        ports:
+        - containerPort: 8088
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: openfaas-fn
+spec:
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  selector:
+    app: frontend-app
+  ports:
+    - protocol: TCP
+      port: 8088
+
