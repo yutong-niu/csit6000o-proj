@@ -11,7 +11,7 @@ def get_product_from_external_service(product_id):
     """
     response = requests.post('http://{}:8080'.format(product_service_url), data=product_id)
     try:
-        response_dict = response.json()["body"]["product"]
+        response_dict = response.json()["product"]
     except KeyError:
         raise NotFoundException
 
