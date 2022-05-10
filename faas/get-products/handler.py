@@ -18,3 +18,4 @@ def handle(event, context):
         "headers": HEADERS,
         "body": {"products": product_list},
     }
+

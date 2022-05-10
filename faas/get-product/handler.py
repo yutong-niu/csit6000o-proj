@@ -19,9 +19,8 @@ def handle(event, context):
     )
 
     return {
-        "statusCode": 200,
-        "headers": HEADERS,
-        "body": {
-            "product": product
-        },
+            "statusCode": 200,
+            "headers": HEADERS,
+            "body": {"product": product},
     }
+
