@@ -30,17 +30,18 @@ mycol = mydb['items']
 
 def handle(event, context):
     try:
-        request_payload = event.body.decode('utf-8')
+        request_payload = json.loads(event.body.decode('utf-8'))
     except KeyError:
         return {
                 "statusCode": 400,
                 "headers": get_headers(),
                 "body": json.dumps({"message": "No Request payload"}),
                 }
-    product_id = event.pathParameters.product_id
-
+    #product_id = event.pathParameters.product_id
+    product_id = request_payload["product_id"]
     quantity = int(request_payload["quantity"])
-    cart_id, _ = get_cart_id(event["headers"])
+    #cart_id, _ = get_cart_id(event["headers"])
+    cart_id = request_payload['cart_id']
     try:
         product = get_product_from_external_service(product_id)
     except NotFoundException:
@@ -69,16 +70,17 @@ def handle(event, context):
             "pk": pk,
             "sk": f"product@{product_id}",
             }
-    data = {
-            "quantity": quantity,
-            "expirationTime": ttl,
-            "productDetail": product,
+    data = {"$set":{
+                "quantity": quantity,
+                "expirationTime": ttl,
+                "productDetail": product,
+                }
             }
-    mycol.update(key, data, upsert = True)
+    mycol.update_one(key, data, upsert = True)
 
     return {
             "statusCode": 200,
-            "headers": get_headers(cart_id),
-            "body": {"productId": product_id, "quantity": quantity, "message": "cart updated"},
+            #"headers": get_headers(cart_id),
+            "body": json.dumps({"productId": product_id, "quantity": quantity, "message": "cart updated","all":list(mycol.find())}, default=str),
             }
 

@@ -29,7 +29,7 @@ def handle(event, context):
     """
     #cart_id, generated = get_cart_id(event.headers.decode('utf-8'))
     _id = event.body.decode('utf-8') 
-    key_string = f"user@{_id}"
+    key_string = f"cart@{_id}"
     generated = False
     # will change later
 
