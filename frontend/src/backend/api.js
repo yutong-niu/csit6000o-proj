@@ -1,4 +1,5 @@
 import axios from "axios"
+import { url } from "vuelidate/lib/validators"
 //
 // async function getHeaders(includeAuth) {
 //     const headers = {
@@ -24,44 +25,45 @@ import axios from "axios"
 // }
 
 export async function getCart() {
-    return axios
-      .get('http://13.213.147.47:8080/function/list-cart')
-      .then(response => response)
+  return axios
+    .get('/api/list-cart')
+    .then(response => response)
 }
 
 export async function postCart(obj, quantity = 1) {
-    return axios
-      .post('http://13.213.147.47:8080/function/add-to-cart',{
-          "productId": obj.productId,
-          "quantity": quantity,
+  return axios
+    .post('/api/add-to-cart',
+      {
+        "productId": obj.productId,
+        "quantity": quantity,
       }
-      )
-      .then(response => response)
+    )
+    .then(response => response)
 }
 
 export async function putCart(obj, quantity) {
-    return axios
-      .post('http://13.213.147.47:8080/function/update-cart',{
-          "productId": obj.productId,
-          "quantity": quantity,
-      })
-      .then(response => response)
+  return axios
+    .post('/api/update-cart', {
+      "productId": obj.productId,
+      "quantity": quantity,
+    })
+    .then(response => response)
 }
 
-export async function getProduct(obj) {
-    return axios
-      .get('http://13.213.147.47:8080/function/get-product')
-      .then(response => response)
-}
+// export async function getProduct(obj) {
+//   return axios
+//     .get('/get-product')
+//     .then(response => response)
+// }
 
-export async function getProducts(obj) {
-    return axios
-      .get('http://13.213.147.47:8080/function/get-products')
-      .then(response => response)
+export async function getProducts() {
+  return axios
+    .get('/api/get-products')
+    .then(response => response)
 }
 
 export async function cartCheckout() {
-    return axios
-      .get('http://13.213.147.47:8080/function/get-products')
-      .then(response => response)
+  return axios
+    .get('/api/get-products')
+    .then(response => response)
 }
