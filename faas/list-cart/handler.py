@@ -27,10 +27,10 @@ def handle(event, context):
     Args:
         req (str): request body
     """
-    #cart_id, generated = get_cart_id(event.headers.decode('utf-8'))
-    _id = event.body.decode('utf-8') 
-    key_string = f"cart@{_id}"
-    generated = False
+    cart_id, generated = get_cart_id(event.headers.decode('utf-8'))
+    #_id = event.body.decode('utf-8') 
+    key_string = f"cart@{cart_id}"
+   # generated = False
     # will change later
 
     if generated:
