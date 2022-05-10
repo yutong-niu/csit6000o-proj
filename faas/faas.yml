@@ -16,10 +16,12 @@ functions:
     common_files: true
 
   add-to-cart:
-    lang: python3
+    lang: python3-http
     handler: ./add-to-cart
     image: serverlessshoppingcart/add-to-cart:latest
     common_files: true
+    build_args:
+        TEST_ENABLED: false
     environment:
         PRODUCT_SERVICE_URL: get-product.openfaas-fn.svc.cluster.local
         MONGODB_SERVICE_URL: mongodb-service.openfaas-fn.svc.cluster.local
