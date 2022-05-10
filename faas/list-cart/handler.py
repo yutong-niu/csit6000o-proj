@@ -27,7 +27,7 @@ def handle(event, context):
     Args:
         req (str): request body
     """
-    cart_id, generated = get_cart_id(event.headers.decode('utf-8'))
+    cart_id, generated = get_cart_id(event.headers)
     #_id = event.body.decode('utf-8') 
     key_string = f"cart@{cart_id}"
    # generated = False
