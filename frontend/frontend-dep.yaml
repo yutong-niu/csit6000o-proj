@@ -18,6 +18,7 @@ spec:
       containers:
       - name: serverlessshoppingcart-frontend
         image: serverlessshoppingcart/frontend:latest
+        command : [ "nginx", "-g", "daemon off;"]
         ports:
         - containerPort: 8088
 
