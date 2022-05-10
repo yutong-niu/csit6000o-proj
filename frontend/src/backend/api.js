@@ -1,4 +1,3 @@
-
 import axios from "axios"
 //
 // async function getHeaders(includeAuth) {
@@ -26,36 +25,43 @@ import axios from "axios"
 
 export async function getCart() {
     return axios
-      .get('http://13.213.147.47:8080/function/get-products')
-      .then(response => (this.info = response))
+      .get('http://13.213.147.47:8080/function/list-cart')
+      .then(response => response)
 }
 
 export async function postCart(obj, quantity = 1) {
     return axios
-      .get('http://13.213.147.47:8080/function/get-products')
-      .then(response => (this.info = response))
+      .post('http://13.213.147.47:8080/function/add-to-cart',{
+          "productId": obj.productId,
+          "quantity": quantity,
+      }
+      )
+      .then(response => response)
 }
 
 export async function putCart(obj, quantity) {
     return axios
-      .get('http://13.213.147.47:8080/function/get-products')
-      .then(response => (this.info = response))
+      .post('http://13.213.147.47:8080/function/update-cart',{
+          "productId": obj.productId,
+          "quantity": quantity,
+      })
+      .then(response => response)
 }
 
 export async function getProduct(obj) {
     return axios
-      .get('http://13.213.147.47:8080/function/get-products')
-      .then(response => (this.info = response))
+      .get('http://13.213.147.47:8080/function/get-product')
+      .then(response => response)
 }
 
-export async function cartMigrate() {
+export async function getProducts(obj) {
     return axios
       .get('http://13.213.147.47:8080/function/get-products')
-      .then(response => (this.info = response))
+      .then(response => response)
 }
 
 export async function cartCheckout() {
     return axios
       .get('http://13.213.147.47:8080/function/get-products')
-      .then(response => (this.info = response))
+      .then(response => response)
 }

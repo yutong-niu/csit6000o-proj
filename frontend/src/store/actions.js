@@ -20,7 +20,7 @@ const fetchProducts = ({
     commit
 }) => {
     getProducts().then((response) => {
-        commit("setUpProducts", response.products);
+        commit("setUpProducts", response.data.products);
     });
 }
 const fetchCart = ({
@@ -29,7 +29,8 @@ const fetchCart = ({
     commit("setLoading", {value: true})
     getCart()
         .then((response) => {
-            commit("setUpCart", response.products)
+            console.log(response)
+            commit("setUpCart", response.data.products)
             commit("setLoading", {value: false})
         })
 }
