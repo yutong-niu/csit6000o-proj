@@ -18,7 +18,6 @@ spec:
       containers:
       - name: serverlessshoppingcart-frontend
         image: serverlessshoppingcart/frontend:latest
-        command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
         ports:
         - containerPort: 8088
 
