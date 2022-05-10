@@ -16,7 +16,7 @@ import {
 
 Vue.use(AmplifyPlugin, AmplifyModules)
 
-
+// blank
 getUser().then((user) => {
   if (user) {
     router.push({
