@@ -32,12 +32,29 @@ def handle(event, context):
     Args:
         req (str): request body
     """
-#    product_id = req["productId"]
-#    quantity = req.get("quantity", 1)
+    request_payload = json.loads(event.body.decode('utf-8'))
+    product_id = request_payload["productId"]
+    quantity = request_payload.get("quantity", 1)
+    cart_id, _ = get_cart_id(event.headers)
+
+    try:
+        product = get_product_from_external_service(product_id)
+    except NotFoundException:
+        return {
+            "statusCode": 404,
+            "headers": get_headers(cart_id),
+            "body": json.dumps({"message": "product not found"}),
+        }
+
+    pk = f"cart#{cart_id}"
+    ttl = generate_ttl()
+
+    
     return {
         "statusCode": 200,
-        "body": {
-            "key": "value"
-        }
+        "headers": get_headers(cart_id),
+        "body": json.dumps(
+            {"productId": product_id, "message": "product added to cart"}
+        ),
     }
 
