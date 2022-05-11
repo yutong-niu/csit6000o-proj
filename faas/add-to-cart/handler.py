@@ -49,6 +49,30 @@ def handle(event, context):
     pk = f"cart#{cart_id}"
     ttl = generate_ttl()
 
+    key = {
+        "pk": pk,
+        "sk": f"product@{product_id}",
+    }
+
+    query = mycol.find_one(key)
+    if not query:
+        initial_quantity = 0
+    else:
+        initial_quantity = query['quantity']
+    update_quantity = initial_quantity + int(quantity)
+
+    if update_quantity <= 0:
+        mycol.delete_one(key)
+    else:
+        data = {
+            "$set": {
+                "quantity": update_quantity,
+                "expirationTime": ttl,
+                "productDetail": product,
+            }
+        }
+        mycol.update_one(key, data, upsert=True)
+
     
     return {
         "statusCode": 200,
