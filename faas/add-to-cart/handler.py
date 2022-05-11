@@ -51,7 +51,7 @@ def handle(event, context):
 
     key = {
         "pk": pk,
-        "sk": f"product@{product_id}",
+        "sk": f"product#{product_id}",
     }
 
     query = mycol.find_one(key)
