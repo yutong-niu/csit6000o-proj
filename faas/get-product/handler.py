@@ -17,10 +17,15 @@ def handle(event, context):
     product = next(
         (item for item in product_list if item["productId"] == product_id), None
     )
-
-    return {
+    if product:
+        return {
             "statusCode": 200,
             "headers": HEADERS,
             "body": {"product": product},
-    }
-
+        }
+    else:
+        return {
+            "statusCode": 404,
+            "headers": HEADERS,
+            "body": {"message": "product not found"},
+        }

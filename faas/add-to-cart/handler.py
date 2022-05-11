@@ -43,7 +43,7 @@ def handle(event, context):
         return {
             "statusCode": 404,
             "headers": get_headers(cart_id),
-            "body": json.dumps({"message": "product not found"}),
+            "body": {"message": "product not found"},
         }
 
     pk = f"cart#{cart_id}"
