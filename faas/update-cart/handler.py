@@ -29,46 +29,46 @@ mydb = mongo_client['cart']
 mycol = mydb['items']
 
 def handle(event, context):
+
     try:
-        request_payload = json.loads(event.body.decode('utf-8'))
+        request_payload = json.loads(event.body.decode('utf8'))
     except KeyError:
         return {
                 "statusCode": 400,
                 "headers": get_headers(),
-                "body": json.dumps({"message": "No Request payload"}),
+                "body": {"message": "No Request payload"},
                 }
-    #product_id = event.pathParameters.product_id
-    product_id = request_payload["product_id"]
+    product_id = event.path[1:]
+    #product_id = request_payload["product_id"]
     quantity = int(request_payload["quantity"])
-    #cart_id, _ = get_cart_id(event["headers"])
-    cart_id = request_payload['cart_id']
+    cart_id, _ = get_cart_id(event.headers)
+    #cart_id = request_payload['cart_id']
     try:
         product = get_product_from_external_service(product_id)
     except NotFoundException:
         return {
                 "statusCode": 404,
                 "headers": get_headers(cart_id=cart_id),
-                "body": json.dumps({"message": "product not found"}),
+                "body": {"message": "product not found"},
                 }
 
     if quantity < 0:
         return {
                 "statusCode": 400,
                 "headers": get_headers(cart_id),
-                "body": json.dumps(
+                "body": 
                     {
                         "productId": product_id,
                         "message": "Quantity must not be lower than 0",
                     }
-                 ),
                 }
 
-    pk = f"cart@{cart_id}"
+    pk = f"cart#{cart_id}"
     ttl = generate_ttl()
     
     key = {
             "pk": pk,
-            "sk": f"product@{product_id}",
+            "sk": f"product#{product_id}",
             }
     data = {"$set":{
                 "quantity": quantity,
@@ -80,7 +80,7 @@ def handle(event, context):
 
     return {
             "statusCode": 200,
-            #"headers": get_headers(cart_id),
-            "body": json.dumps({"productId": product_id, "quantity": quantity, "message": "cart updated","all":list(mycol.find())}, default=str),
+            "headers": get_headers(cart_id),
+            "body": json.dumps({"productId": product_id, "quantity": quantity, "message": "cart updated", default=str),
             }
 

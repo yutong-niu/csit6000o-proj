@@ -9,7 +9,7 @@ def get_product_from_external_service(product_id):
     """
     Call product API to retrieve product details
     """
-    response = requests.post('http://{}:8080'.format(product_service_url), data=product_id)
+    response = requests.post('http://{}:8080/{}'.format(product_service_url,product_id))
     try:
         response_dict = response.json()["product"]
     except KeyError:
