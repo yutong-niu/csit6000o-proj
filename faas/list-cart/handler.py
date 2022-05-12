@@ -40,6 +40,10 @@ def handle(event, context):
         projection = {"sk":1,"quantity":1,"productDetail":1}
         product_list = list(mycol.find(q, projection))
    # all_product = list(mycol.find())   
+    for product in product_list:
+        product.update(
+            (k, v.replace("product#", "")) for k, v in product.items() if k == "sk"
+        )
     return {
         "statusCode": 200,
         "headers": get_headers(cart_id),
