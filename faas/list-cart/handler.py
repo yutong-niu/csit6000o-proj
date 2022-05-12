@@ -29,7 +29,7 @@ def handle(event, context):
     """
     cart_id, generated = get_cart_id(event.headers)
     #_id = event.body.decode('utf-8') 
-    key_string = f"cart@{cart_id}"
+    key_string = f"cart#{cart_id}"
    # generated = False
     # will change later
 
@@ -42,6 +42,6 @@ def handle(event, context):
     # all_product = list(mycol.find())   
     return {
         "statusCode": 200,
-        # "headers": get_headers(cart_id),
+        "headers": get_headers(cart_id),
         "body": json.dumps({"products": product_list,}, default = str)
     }
