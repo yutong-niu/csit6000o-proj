@@ -45,7 +45,7 @@ const addToCart = ({
     postCart(obj)
         .then((response) => {
             commit("setCartLoading", 1)
-            commit("addToCart", response.productId);
+            commit("addToCart", response.data.productId);
             commit("setProductLoading", {
                 "product": obj,
                 "value": false,
@@ -73,7 +73,7 @@ const removeFromCart = ({
     postCart(obj, -1)
         .then((response) => {
             commit("setCartLoading", 1)
-            commit("removeFromCart", response.productId)
+            commit("removeFromCart", response.data.productId)
             commit("setProductLoading", {
                 "product": obj,
                 "value": false,
@@ -96,7 +96,7 @@ const updateCart = ({
     putCart(obj.product, obj.quantity)
         .then((response) => {
             commit("setCartLoading", 1)
-            commit("updateCart", response)
+            commit("updateCart", response.data)
             setTimeout(() => {
                 commit("setCartLoading", -1)
             }, 500)

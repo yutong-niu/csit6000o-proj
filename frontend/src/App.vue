@@ -10,11 +10,11 @@
         </router-link>
       </v-toolbar-title>
       <v-toolbar-items>
-        <v-btn to="/auth" v-if="!currentUser" text class="ml-2">Sign In</v-btn>
+<!--        <v-btn to="/auth" v-if="!currentUser" text class="ml-2">Sign In</v-btn>-->
         <cart-button @drawerChange="toggleDrawer" />
-        <div class="sign-out">
-          <amplify-sign-out v-if="currentUser" class="Form--signout pl-2"></amplify-sign-out>
-        </div>
+<!--        <div class="sign-out">-->
+<!--          <amplify-sign-out v-if="currentUser" class="Form&#45;&#45;signout pl-2"></amplify-sign-out>-->
+<!--        </div>-->
       </v-toolbar-items>
     </v-app-bar>
     <v-content>

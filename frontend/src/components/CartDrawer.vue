@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     getTotalPrice(item) {
-      return new Decimal((item.productDetail.price/100) * item.quantity).toFixed(2);
+      return new Decimal((item.productDetail.price/100) * item.quantity).toFixed(2);2
     }
   }
 };

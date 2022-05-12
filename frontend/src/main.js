@@ -6,7 +6,6 @@ import Vuelidate from 'vuelidate'
 import VueMask from 'v-mask'
 import App from './App'
 import router from './router'
-import config from './aws-exports'
 import vuetify from '@/plugins/vuetify'
 import store from './store/store'
 import {

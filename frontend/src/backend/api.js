@@ -64,6 +64,6 @@ export async function getProducts() {
 
 export async function cartCheckout() {
   return axios
-    .get('/api/get-products')
+    .get('/api/checkout-cart')
     .then(response => response)
 }

@@ -16,6 +16,7 @@ const addToCart = (state, productId) => {
     let product = {}
     product.productDetail = state.products.find((prod) => prod.productId === productId);
     product.sk = productId
+    console.log(productId,state.products)
     let cartProduct = state.cart.find((prod) => prod.sk === productId);
     if (cartProduct) {
         cartProduct.quantity++;
