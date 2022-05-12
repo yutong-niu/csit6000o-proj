@@ -30,19 +30,10 @@ mycol = mydb['items']
 
 def handle(event, context):
 
-    try:
-        request_payload = json.loads(event.body.decode('utf8'))
-    except KeyError:
-        return {
-                "statusCode": 400,
-                "headers": get_headers(),
-                "body": {"message": "No Request payload"},
-                }
-    product_id = event.path[1:]
-    #product_id = request_payload["product_id"]
+    request_payload = json.loads(event.body.decode('utf-8'))
+    product_id = request_payload["productId"]
     quantity = int(request_payload["quantity"])
     cart_id, _ = get_cart_id(event.headers)
-    #cart_id = request_payload['cart_id']
     try:
         product = get_product_from_external_service(product_id)
     except NotFoundException:
@@ -81,6 +72,6 @@ def handle(event, context):
     return {
             "statusCode": 200,
             "headers": get_headers(cart_id),
-            "body": json.dumps({"productId": product_id, "quantity": quantity, "message": "cart updated", default=str),
+            "body": json.dumps({"productId": product_id, "quantity": quantity, "message": "cart updated"}, default=str),
             }
 
