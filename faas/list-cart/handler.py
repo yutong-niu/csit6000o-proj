@@ -39,7 +39,7 @@ def handle(event, context):
         q = {'pk':key_string, "quantity": {"$gt": 0}}
         projection = {"sk":1,"quantity":1,"productDetail":1}
         product_list = list(mycol.find(q, projection))
-    # all_product = list(mycol.find())   
+   # all_product = list(mycol.find())   
     return {
         "statusCode": 200,
         "headers": get_headers(cart_id),
