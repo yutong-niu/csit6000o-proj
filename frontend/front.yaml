@@ -16,24 +16,22 @@ spec:
         app: frontend-app
     spec:
       containers:
-      - name: serverlessshoppingcart-frontend
+      - name: frontend
         image: serverlessshoppingcart/frontend:latest
-        command : [ "nginx", "-g", "daemon off;"]
         ports:
-        - containerPort: 8088
+        - containerPort: 8080
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
+  name: frontend-service
   namespace: openfaas-fn
 spec:
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
   selector:
-    app: hello
-    tier: frontend
+    app: frontend-app
   ports:
-  - protocol: "TCP"
-    port: 80
-    targetPort: 80
-  type: LoadBalancer
+  - protocol: TCP
+    port: 8080
