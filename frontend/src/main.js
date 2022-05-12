@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Amplify from 'aws-amplify'
+
 import Vuelidate from 'vuelidate'
 import VueMask from 'v-mask'
 import App from './App'
@@ -21,7 +21,6 @@ import CartQuantityEditor from "@/components/CartQuantityEditor.vue"
 
 Vue.config.productionTip = false
 
-Amplify.configure(config)
 Vue.use(VueRouter)
 Vue.use(Vuelidate)
 Vue.use(VueMask);

@@ -25,7 +25,18 @@ functions:
     environment:
         PRODUCT_SERVICE_URL: get-product.openfaas-fn.svc.cluster.local
         MONGODB_SERVICE_URL: mongodb-service.openfaas-fn.svc.cluster.local
-        
+
+  checkout-cart:
+    lang: python3-http
+    handler: ./checkout-cart
+    image: serverlessshoppingcart/checkout-cart:latest
+    common_files: true
+    build_args:
+        TEST_ENABLED: false
+    environment:
+        PRODUCT_SERVICE_URL: get-product.openfaas-fn.svc.cluster.local
+        MONGODB_SERVICE_URL: mongodb-service.openfaas-fn.svc.cluster.local
+
   list-cart:
     lang: python3-http
     handler: ./list-cart
