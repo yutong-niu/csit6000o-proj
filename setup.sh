@@ -21,3 +21,5 @@ curl -SLsf https://dl.get-arkade.dev/ | sudo sh
 
 # Install faas-cli
 curl -sL https://cli.openfaas.com | sudo sh
+
+sudo sysctl fs.protected_regular=0
