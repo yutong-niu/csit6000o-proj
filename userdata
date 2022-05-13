@@ -1,0 +1,4 @@
+#!/bin/bash
+git clone https://github.com/yutong-niu/csit6000o-proj.git /var/proj
+/var/proj/setup.sh 2>&1 > /tmp/setup.log
+sudo /var/proj/deploy.sh 2>&1 > /tmp/deploy.log
