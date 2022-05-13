@@ -10,6 +10,9 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 # Install Docker
 sudo apt-get update && sudo apt-get install docker.io -y
 
+# Install Socat
+sudo apt-get install socat -y
+
 # Install conntrack
 sudo apt-get install -y conntrack
 
