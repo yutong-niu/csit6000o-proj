@@ -3,7 +3,7 @@ CSIT6000o Project - Serverless Shopping Cart
 
 |Name|SID|ITSC|CONTRIBUTION|
 |---|---|---|---|
-|Niu Yutong|20176192|yniuaa||
+|Niu Yutong|20176192|yniuaa|Openfaas functions, Kubernetes deployment, Automation scripts|
 |BAI Qian|20786466|qbaiaa|Modified and built frontend service|
 |ZHANG Yiwen|20790766|yzhangmp|Replace DynamoDB with MongoDB|
 |TONG Jinjian|20788658|jtongad||
