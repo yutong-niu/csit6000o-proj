@@ -14,7 +14,7 @@ This project derives from the serverless shopping cart project from AWS Sample: 
 ## Infrastructure
 The project is ready for deployment to a kubernetes cluster. To make the deployment simple enough, we build some automation script to deploy the project to a single-node Minikube cluster built on an AWS EC2 machine. The EC2 instance should expose the HTTP port 80 for frontend web application and port 8080 for openfaas functions. The deployments include a MongoDB database, several openfaas functions and a JavaScript Vue Frontend application. All of these are deployed to the same namespace in the Kubernetes cluster: openfaas-fn. The infrastructure is illustrated by the figure below.
 
-![](./infra.drawio.png)
+![](https://i.ibb.co/nDm3ZzL/infra-drawio-1.png)
 
 ## Deploy to an AWS EC2 instance
 If the project is deployed to an AWS EC2 instance, we provide a userdata script on EC2 launch.
@@ -41,6 +41,8 @@ For the test machine, we choose the following config:
 |Storage| 50GiB gp3 on Root volume|
 
 > **The userdata can take up to 10 minutes to be ready on an EC2 machine of type m5.large. After the deployment, all the Openfaas functions can be accessed through {server_ip}:8080/function/{function_name}. And the Frontend Web App can be accessed through http://{server_ip}**
+
+![](https://i.ibb.co/w4Dc9MH/deploy.png)
 
 ## Manual Deployment
 If the userdata method is not preferred, here is the step-by-step instruction on Manual Deployment.
