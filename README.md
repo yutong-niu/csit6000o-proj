@@ -1,7 +1,7 @@
 # csit6000o-proj
 CSIT6000o Project - Serverless Shopping Cart
 
-|Name|SID|ITSC|contribution|
+|Name|SID|ITSC|CONTRIBUTION|
 |---|---|---|---|
 |Niu Yutong|20176192|yniuaa|
 |BAI Qian|20786466|qbaiaa|Modified and built frontend service|
