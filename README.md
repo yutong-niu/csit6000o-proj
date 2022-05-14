@@ -5,6 +5,7 @@ CSIT6000o Project - Serverless Shopping Cart
 |---|---|---|
 |Niu Yutong|20176192|yniuaa|
 |BAI Qian|20786466|qbaiaa|
+|ZHANG Yiwen|20790766|yzhangmp|
 
 ## Background
 This project derives from the serverless shopping cart project from AWS Sample: [https://github.com/aws-samples/aws-serverless-shopping-cart](https://github.com/aws-samples/aws-serverless-shopping-cart). We use Openfaas to replace AWS Lambda functions and MongoDB to replace AWS DynamoDB.
